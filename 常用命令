@@ -1,0 +1,34 @@
+网络相关操作
+
+#查timewait和establish状态的连接数。
+netstat -a -n|grep -E "^(tcp)"| cut -c 68-|sort|uniq -c|sort -n
+
+# 查establish状态的IP
+netstat -a -n | grep ESTABLISHED | awk '{print $5}' | awk -F\: '{print $1}' | sort |uniq -c
+
+es相关操作
+
+设置所有index
+curl -XPUT '127.0.0.1:8405/_settings' -d ' { "index" : { "number_of_replicas" : 0 } }'
+
+设置index：wlx
+curl -XPUT '127.0.0.1:8405/wlx/_settings' -d ' { "index" : { "number_of_replicas" : 0 } }'
+
+查询index
+curl -s '127.0.0.1:8405/_cat/indices?v'
+
+查看master
+curl localhost:8405/_cat/master?v
+
+查看activemq topic状态
+curl -u admin:admin 'http://localhost:8161/admin/xml/topics.jsp'
+
+查看DATA信息
+curl -XGET 'http://127.0.0.1:8405/faq_chinamobile/_search?pretty&size=100&scroll=10m'
+
+编辑index的replicas
+curl -XPUT 'http://127.0.0.1:8405/faq_chinamobile/_settings' -d'{"index":{"number_of_replicas":1}}'
+
+
+kafka常用命令
+
