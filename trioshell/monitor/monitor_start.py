@@ -32,6 +32,7 @@ def disk_monitor():
 def chinamobile_process_monitor():
     home = os.environ['HOME']
     if not os.path.exists(home + '/ChinaMobile/Shell/server.pid'):
+        print "server.pid do not exist."
         return "server.pid do not exist."
     with open(home + '/ChinaMobile/Shell/server.pid', 'r') as f:
         for i in f:
@@ -56,5 +57,3 @@ if __name__ == '__main__':
         diskfile.write(diskstat + '\n')
 
     chinamobile_process_monitor()
-
-

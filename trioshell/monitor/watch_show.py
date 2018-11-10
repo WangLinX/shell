@@ -132,6 +132,8 @@ if __name__ == '__main__':
             query_parser_server_memdata=readData(lines, process_memCols, msln, meln)
             ppp(query_parser_server_memdata, "query_parser_server", kedu_num, kedu_time)
 
+
+
     plt.figure(1)
     cpu_use = map(lambda x,y:int(x)+ int(y),cpudata[0],cpudata[1])
     plt.plot(cpu_use)
