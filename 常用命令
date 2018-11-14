@@ -32,3 +32,8 @@ curl -XPUT 'http://127.0.0.1:8405/faq_chinamobile/_settings' -d'{"index":{"numbe
 
 kafka常用命令
 
+启动 Console Producer
+bin/kafka-console-producer.sh --broker-list 10.0.3.31:6667,10.0.3.34:6667,10.0.3.32:6667 --topic TEST
+在另一台机器打开 console consumer。
+启动 Console Consumer
+bin/kafka-console-consumer.sh --zookeeper offline-15:2181,offline-14:2181,offline-13:2181 --topic TEST --from-beginning
